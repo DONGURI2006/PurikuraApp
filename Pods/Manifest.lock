@@ -1,0 +1,20 @@
+PODS:
+  - ACEDrawingView (2.2.1)
+  - Alamofire (5.12.0)
+
+DEPENDENCIES:
+  - ACEDrawingView
+  - Alamofire (~> 5.12)
+
+SPEC REPOS:
+  trunk:
+    - ACEDrawingView
+    - Alamofire
+
+SPEC CHECKSUMS:
+  ACEDrawingView: fa6e8461682a54db3ac65151474fc77ef7e54fd2
+  Alamofire: ddb8d5201667b256dbc225f3fc6e835a0753186f
+
+PODFILE CHECKSUM: 554ce543460dd3ad00fcba4a3955399239447859
+
+COCOAPODS: 1.17.0
