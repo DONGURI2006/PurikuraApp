@@ -16,7 +16,7 @@ class DecoController: UIViewController, UICollectionViewDelegate,UICollectionVie
     
     
     var Images: [UIImage] = []
-    var Icon = ["Monkey","Monkey","Monkey"]
+    var Icon = ["Monkey","Monkey","Monkey","Monkey","Monkey"]
     var draggingImageView: MarkerBase?
     var PictureCount = 0
     var DrawCount = 0
