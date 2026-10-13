@@ -19,7 +19,8 @@ class ImageController: UIViewController,UICollectionViewDelegate,UICollectionVie
     var Icon = ["Monkey","Monkey","Monkey","Monkey","Monkey","Monkey","Monkey","Monkey"]
     var draggingImageView: MarkerBase?
     var correctMarkerCount = 0
-    
+    var SerectNumber = 0
+    var SerectImg = ""
     var PictureCount = 0
     var DrawCount = 0
     var Changes = false
@@ -56,13 +57,32 @@ class ImageController: UIViewController,UICollectionViewDelegate,UICollectionVie
     }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
-        if segue.identifier == "GoResult" {
+        if segue.identifier == "GoResult3" {
             
             if let Result = segue.destination as? ResultController {
                 
                 Result.Images = self.Images
                 Result.PictureCount = self.PictureCount
+                Result.SerectImg = self.SerectImg
                 
+            }
+        }
+        if segue.identifier == "GoResult2" {
+            
+            if let Result = segue.destination as? ResultController2 {
+                
+                Result.Images = self.Images
+                Result.PictureCount = self.PictureCount
+                Result.SerectImg = self.SerectImg
+            }
+        }
+        if segue.identifier == "GoResult1" {
+            
+            if let Result = segue.destination as? ResultController3 {
+                
+                Result.Images = self.Images
+                Result.PictureCount = self.PictureCount
+                Result.SerectImg = self.SerectImg
             }
         }
     }
@@ -204,9 +224,19 @@ class ImageController: UIViewController,UICollectionViewDelegate,UICollectionVie
         self.Images[self.DrawCount] = SaveImage()
         
 
-        if self.DrawCount > 1 {
+        if self.DrawCount + 1 >= self.SerectNumber {
+            if self.SerectNumber == 1{
                 
-            self.performSegue(withIdentifier: "GoResult",sender: nil)
+                self.performSegue(withIdentifier: "GoResult1",sender: nil)
+                
+            }else if self.SerectNumber == 4{
+                
+                self.performSegue(withIdentifier: "GoResult2",sender: nil)
+                
+            }else{
+                self.performSegue(withIdentifier: "GoResult3",sender: nil)
+            }
+            
                 
         } else {
             for subview in self.ResultView.subviews {
@@ -218,8 +248,10 @@ class ImageController: UIViewController,UICollectionViewDelegate,UICollectionVie
             self.DrawingView.clear()
                 
             self.DrawCount += 1
-                
+            
             self.ImgView.image = self.Images[self.DrawCount]
+
+            
         }
     }
     @IBAction func ChangeBtn(_ sender: Any) {

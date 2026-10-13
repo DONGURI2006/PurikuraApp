@@ -13,18 +13,17 @@ class ResultController: UIViewController, UICollectionViewDelegate,
 
     @IBOutlet weak var CollectionView: UICollectionView!
     @IBOutlet weak var PurikuraFileView: UIView!
+    @IBOutlet weak var BackgroundImg: UIImageView!
+    
     var Images: [UIImage] = []
     var FinalImg : UIImage?
     var PictureCount = 0
-    
+    var SerectImg = ""
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.hidesBackButton = true
         navigationController?.interactivePopGestureRecognizer?.isEnabled = false
-        for i in 0...2{
-            self.Images.append(self.Images[i])
-        }
-        
+        self.BackgroundImg.image = UIImage(named: SerectImg)
         self.CollectionView.delegate = self
         self.CollectionView.dataSource = self
         
@@ -55,7 +54,7 @@ class ResultController: UIViewController, UICollectionViewDelegate,
     //セルのサイズと配置を3指定する
     func collectionView(_ collectionView: UICollectionView,layout collectionViewLayout: UICollectionViewLayout,sizeForItemAt indexPath: IndexPath) -> CGSize {
                 
-        let width = (collectionView.bounds.width - 20) / 3
+        let width = (collectionView.bounds.width - 37) / 3
                 
         return CGSize(width: width,height: width)
     }

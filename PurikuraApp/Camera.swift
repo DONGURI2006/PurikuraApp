@@ -19,24 +19,29 @@ class CameraController: UIViewController, AVCapturePhotoCaptureDelegate {
     let photoOutput = AVCapturePhotoOutput()
     
     var Images: [UIImage] = []
+    var Odai = ["ハートのポーズを作ってね","プリキュアになれ","2Pacの真似をしろ","ほっぺをぷにろ","変顔をしろ","ダブルピースをしろ"]
+    var PhotoCount = 0
     var PictureCount = 0
     var CountTimer: Timer?
-    var TimeCount = 5
+    var TimeCount = 8
     var TimeOut:Bool = true
-
+    var SerectNumber = 0
+    var SerectImg = ""
+    
     var previewLayer: AVCaptureVideoPreviewLayer!
     
     override func viewDidLoad() {
         navigationItem.hidesBackButton = true
         navigationController?.interactivePopGestureRecognizer?.isEnabled = false
         super.viewDidLoad()
+        self.Odai.shuffle()
         self.CountNumber.text = ""
         setupCamera()
         
         if self.CountTimer != nil {
             return
         }
-    
+        
         self.StartCountDown()
     }
     
@@ -103,16 +108,27 @@ class CameraController: UIViewController, AVCapturePhotoCaptureDelegate {
                 
                 Img.Images = self.Images
                 Img.PictureCount = self.PictureCount
+                Img.SerectNumber = self.SerectNumber
+                Img.SerectImg = self.SerectImg
                 
             }
         }
     }
     
     func StartCountDown(){
+        
+        
         self.CountTimer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { _ in
 
             
-            self.CountNumber.text = String(self.TimeCount)
+            
+            if(self.TimeCount < 6){
+                self.CountNumber.text = String(self.TimeCount)
+                self.CountNumber.font = UIFont.systemFont(ofSize: 300)
+            }else{
+                self.CountNumber.text = self.Odai[self.PhotoCount]
+                self.CountNumber.font = UIFont.systemFont(ofSize: 64)
+            }
             
             self.TimeCount -= 1
             
@@ -122,8 +138,8 @@ class CameraController: UIViewController, AVCapturePhotoCaptureDelegate {
                 
                 self.CountNumber.text = ""
                 
-                self.TimeCount = 5
-                
+                self.TimeCount = 8
+                self.PhotoCount += 1
                 let settings = AVCapturePhotoSettings()
                 
                 self.photoOutput.capturePhoto(with: settings,delegate: self)
@@ -151,7 +167,7 @@ class CameraController: UIViewController, AVCapturePhotoCaptureDelegate {
             
             self.PictureCount += 1
             
-            if self.PictureCount >= 3 {
+            if self.PictureCount >= self.SerectNumber {
 
                 performSegue(withIdentifier: "ImageGO",sender: nil)
             } else {
