@@ -51,6 +51,9 @@ class BackSerectController: UIViewController,UICollectionViewDelegate,
             self.TimeCount -= 1
             
             if self.TimeCount < 0{
+                self.CountTimer?.invalidate()
+                self.CountTimer = nil
+                
                 self.performSegue(withIdentifier: "GoCamera", sender: nil)
             }
         }
