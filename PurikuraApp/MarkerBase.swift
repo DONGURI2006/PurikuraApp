@@ -21,6 +21,15 @@ class MarkerBase: UIImageView{
                 
         self.isUserInteractionEnabled = true
         
+        let PinchGesture = UIPinchGestureRecognizer(target: self,action: #selector(HandlePinch(_:)))
+        self.addGestureRecognizer(PinchGesture)
+        
+        let LongPressGesture = UILongPressGestureRecognizer(target: self,action: #selector(OnLongPress(gestureRecognizer:)))
+        self.addGestureRecognizer(LongPressGesture)
+        
+        let RotationGesture = UIRotationGestureRecognizer(target: self,action: #selector(HandleRotation(_:)))
+        self.addGestureRecognizer(RotationGesture)
+        
     }
     
     required init?(coder: NSCoder) {
@@ -48,7 +57,7 @@ class MarkerBase: UIImageView{
         }
     }
     
-    @objc func onLongPress(gestureRecognizer: UILongPressGestureRecognizer)
+    @objc func OnLongPress(gestureRecognizer: UILongPressGestureRecognizer)
     {
         UIView.animate(withDuration: 0.7) {
             
@@ -58,6 +67,34 @@ class MarkerBase: UIImageView{
         }
 
     }
+    @objc func HandleRotation(_ gesture: UIRotationGestureRecognizer) {
+            if gesture.state == .changed {
+                self.transform = self.transform.rotated(by: gesture.rotation)
+
+                gesture.rotation = 0
+            }
+
+            if gesture.state == .ended {
+                delegate?.didMoveMarker()
+            }
+        }
+
+    @objc func HandlePinch(_ gesture: UIPinchGestureRecognizer)
+    {
+
+        guard gesture.view != nil else { return }
+
+        if gesture.state == .changed {
+                
+            self.transform = self.transform.scaledBy(x: gesture.scale,y: gesture.scale)
+            gesture.scale = 1.0
+        }
+
+        if gesture.state == .ended {
+            delegate?.didMoveMarker()
+        }
+    }
+    
     class func createMarker(image: UIImage) -> MarkerBase?
     {
         let marker = MarkerBase(image: image)
