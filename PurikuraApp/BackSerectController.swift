@@ -17,6 +17,7 @@ class BackSerectController: UIViewController,UICollectionViewDelegate,
     let BackImages = ["Monkey","Monkey","Monkey","Monkey","Monkey","Monkey"]
     var TimeCount = 10
     var CountTimer: Timer?
+    @IBOutlet weak var CountText: UILabel!
     @IBOutlet weak var SerectImgView1: UIView!
     @IBOutlet weak var SerectImgView2: UIView!
     @IBOutlet weak var SerectImgView3: UIView!
@@ -28,6 +29,7 @@ class BackSerectController: UIViewController,UICollectionViewDelegate,
         super.viewDidLoad()
         navigationItem.hidesBackButton = true
         navigationController?.interactivePopGestureRecognizer?.isEnabled = false
+        self.CountText.text = "10"
         self.SerectImgView1.isHidden = true
         self.SerectImgView2.isHidden = true
         self.SerectImgView3.isHidden = true
@@ -49,11 +51,11 @@ class BackSerectController: UIViewController,UICollectionViewDelegate,
         self.CountTimer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { _ in
             
             self.TimeCount -= 1
-            
+            self.CountText.text = String(self.TimeCount)
             if self.TimeCount < 0{
                 self.CountTimer?.invalidate()
                 self.CountTimer = nil
-                
+                self.CountText.text = "0"
                 self.performSegue(withIdentifier: "GoCamera", sender: nil)
             }
         }
@@ -91,7 +93,7 @@ class BackSerectController: UIViewController,UICollectionViewDelegate,
 
         let width = (collectionView.bounds.width - totalSpacing) / 3
 
-        return CGSize(width: width, height: width * 0.7)
+        return CGSize(width: width * 0.8, height: width * 0.5)
     }
 
     func collectionView(_ collectionView: UICollectionView,didSelectItemAt indexPath: IndexPath) {

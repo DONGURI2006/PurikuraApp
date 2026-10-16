@@ -15,6 +15,7 @@ class ImageController: UIViewController,UICollectionViewDelegate,UICollectionVie
     @IBOutlet weak var ImgView: UIImageView!
     @IBOutlet weak var CollectionView: UICollectionView!
     
+    @IBOutlet weak var CountText: UILabel!
     var Images: [UIImage] = []
     var Icon = ["Monkey","Monkey","Monkey","Monkey","Monkey","Monkey","Monkey","Monkey"]
     var draggingImageView: MarkerBase?
@@ -24,7 +25,7 @@ class ImageController: UIViewController,UICollectionViewDelegate,UICollectionVie
     var PictureCount = 0
     var DrawCount = 0
     var Changes = false
-    var NowColor = UIColor(_colorLiteralRed: 255/255, green: 38/255, blue: 0/255, alpha: 1.0)
+    var NowColor = UIColor(_colorLiteralRed: 252/255, green: 33/255, blue: 33/255, alpha: 1.0)
     
     @IBOutlet weak var EditView1: UIView!
     
@@ -45,8 +46,8 @@ class ImageController: UIViewController,UICollectionViewDelegate,UICollectionVie
         self.EditView1.isHidden = false
         self.EditView2.isHidden = true
         self.DrawingView.isUserInteractionEnabled = true
-        
-        let color = UIColor(_colorLiteralRed: 255/255, green: 38/255, blue: 0/255, alpha: 1.0)
+        self.CountText.text = "1/" +  String(self.SerectNumber)
+        let color = UIColor(_colorLiteralRed: 252/255, green: 33/255, blue: 33/255, alpha: 1.0)
         
         self.DrawingView.lineColor = color
         self.HView.backgroundColor = color
@@ -88,7 +89,7 @@ class ImageController: UIViewController,UICollectionViewDelegate,UICollectionVie
     }
     
     @IBAction func RedBtn(_ sender: Any) {
-        let color = UIColor(_colorLiteralRed: 255/255, green: 38/255, blue: 0/255, alpha: 1.0)
+        let color = UIColor(_colorLiteralRed: 252/255, green: 121/255, blue: 33/255, alpha: 1.0)
 
         self.DrawingView.lineColor = color
         self.HView.backgroundColor = color
@@ -98,7 +99,7 @@ class ImageController: UIViewController,UICollectionViewDelegate,UICollectionVie
     }
     
     @IBAction func OrangeBtn(_ sender: Any) {
-        let color = UIColor(_colorLiteralRed: 255/255, green: 147/255, blue: 0/255, alpha: 1.0)
+        let color = UIColor(_colorLiteralRed: 252/255, green: 57/255, blue: 73/255, alpha: 1.0)
 
         self.DrawingView.lineColor = color
         self.HView.backgroundColor = color
@@ -108,7 +109,7 @@ class ImageController: UIViewController,UICollectionViewDelegate,UICollectionVie
     }
     
     @IBAction func YellowBtn(_ sender: Any) {
-        let color = UIColor(_colorLiteralRed: 255/255, green: 251/255, blue: 0/255, alpha: 1.0)
+        let color = UIColor(_colorLiteralRed: 239/255, green: 32/255, blue: 117/255, alpha: 1.0)
 
         self.DrawingView.lineColor = color
         self.HView.backgroundColor = color
@@ -119,7 +120,7 @@ class ImageController: UIViewController,UICollectionViewDelegate,UICollectionVie
     }
     
     @IBAction func GrennBtn(_ sender: Any) {
-        let color = UIColor(_colorLiteralRed: 0/255, green: 249/255, blue: 0/255, alpha: 1.0)
+        let color = UIColor(_colorLiteralRed: 253/255, green: 200/255, blue: 42/255, alpha: 1.0)
 
         self.DrawingView.lineColor = color
         self.HView.backgroundColor = color
@@ -130,7 +131,7 @@ class ImageController: UIViewController,UICollectionViewDelegate,UICollectionVie
     }
     
     @IBAction func BlueBtn(_ sender: Any) {
-        let color = UIColor(_colorLiteralRed: 0/255, green: 51/255, blue: 255/255, alpha: 1.0)
+        let color = UIColor(_colorLiteralRed: 36/255, green: 189/255, blue: 184/255, alpha: 1.0)
 
         self.DrawingView.lineColor = color
         self.HView.backgroundColor = color
@@ -140,7 +141,7 @@ class ImageController: UIViewController,UICollectionViewDelegate,UICollectionVie
     }
     
     @IBAction func PinkBtn(_ sender: Any) {
-        let color = UIColor(_colorLiteralRed: 255/255, green: 64/255, blue: 255/255, alpha: 1.0)
+        let color = UIColor(_colorLiteralRed: 162/255, green: 217/255, blue: 185/255, alpha: 1.0)
 
         self.DrawingView.lineColor = color
         self.HView.backgroundColor = color
@@ -150,7 +151,7 @@ class ImageController: UIViewController,UICollectionViewDelegate,UICollectionVie
     }
     
     @IBAction func BlackBtn(_ sender: Any) {
-        let color = UIColor(_colorLiteralRed: 0/255, green: 0/255, blue: 0/255, alpha: 1.0)
+        let color = UIColor(_colorLiteralRed: 251/255, green: 218/255, blue: 173/255, alpha: 1.0)
         
         self.DrawingView.lineColor = color
         self.HView.backgroundColor = color
@@ -248,7 +249,7 @@ class ImageController: UIViewController,UICollectionViewDelegate,UICollectionVie
             self.DrawingView.clear()
                 
             self.DrawCount += 1
-            
+            self.CountText.text = String(self.DrawCount + 1) + "/" +  String(self.SerectNumber)
             self.ImgView.image = self.Images[self.DrawCount]
 
             
