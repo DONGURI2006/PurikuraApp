@@ -93,7 +93,7 @@ class BackSerectController: UIViewController,UICollectionViewDelegate,
 
         let width = (collectionView.bounds.width - totalSpacing) / 3
 
-        return CGSize(width: width * 0.8, height: width * 0.5)
+        return CGSize(width: width * 0.9, height: width * 0.6)
     }
 
     func collectionView(_ collectionView: UICollectionView,didSelectItemAt indexPath: IndexPath) {
