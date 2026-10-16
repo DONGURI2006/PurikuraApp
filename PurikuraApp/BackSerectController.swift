@@ -45,6 +45,7 @@ class BackSerectController: UIViewController,UICollectionViewDelegate,
             self.SerectImgView3.isHidden = false
         }
         
+        self.BackImg.image = UIImage(named: self.BackImages[0])
         self.BackGarundControllerView.delegate = self
         self.BackGarundControllerView.dataSource = self
         
@@ -99,7 +100,7 @@ class BackSerectController: UIViewController,UICollectionViewDelegate,
     func collectionView(_ collectionView: UICollectionView,didSelectItemAt indexPath: IndexPath) {
         
         self.SerectImg = self.BackImages[indexPath.item]
-        BackImg.image = UIImage(named: self.BackImages[indexPath.item])
+        self.BackImg.image = UIImage(named: self.BackImages[indexPath.item])
         
     }
     

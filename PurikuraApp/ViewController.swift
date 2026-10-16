@@ -13,6 +13,16 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let TapAction = UITapGestureRecognizer(target: self,
+                                               action: #selector(ScreenTapped))
+
+        view.addGestureRecognizer(TapAction)
+        
+    }
+    @objc func ScreenTapped() {
+        self.performSegue(withIdentifier: "GoStart", sender: nil)
+        
     }
 }
 
