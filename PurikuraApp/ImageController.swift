@@ -17,7 +17,8 @@ class ImageController: UIViewController,UICollectionViewDelegate,UICollectionVie
     
     @IBOutlet weak var CountText: UILabel!
     var Images: [UIImage] = []
-    var Icon = ["Monkey","Monkey","Monkey","Monkey","Monkey","Monkey","Monkey","Monkey"]
+    var IconImg = ["DecoImg1","Monkey","Monkey","Monkey","Monkey","Monkey","Monkey","Monkey"]
+    var Icon = ["DecoIcon1","Monkey","Monkey","Monkey","Monkey","Monkey","Monkey","Monkey"]
     var draggingImageView: MarkerBase?
     var correctMarkerCount = 0
     var SerectNumber = 0
@@ -160,7 +161,7 @@ class ImageController: UIViewController,UICollectionViewDelegate,UICollectionVie
         self.NowColor = color
     }
     @IBAction func AlphaBtn(_ sender: Any) {
-        let color = UIColor(_colorLiteralRed: 155/255, green: 155/255, blue: 155/255, alpha: 1.0)
+        let color = UIColor(_colorLiteralRed: 200/255, green: 196/255, blue: 188/255, alpha: 1.0)
         
         self.DrawingView.lineColor = color
         self.HView.backgroundColor = color
@@ -196,7 +197,7 @@ class ImageController: UIViewController,UICollectionViewDelegate,UICollectionVie
         cell.backgroundColor = .clear
         
         let imgName = self.Icon[indexPath.row]
-        
+        let decoName = self.IconImg[indexPath.row]
         let imgView = cell.viewWithTag(100) as? MarkerView
         
         print("cell")
@@ -208,7 +209,7 @@ class ImageController: UIViewController,UICollectionViewDelegate,UICollectionVie
         
         imgView?.delegate = self
         imgView?.image = UIImage(named: imgName)
-        imgView?.markerName = imgName
+        imgView?.markerName = decoName
         imgView?.isUserInteractionEnabled = true
         imgView?.alpha = 1.0
         
@@ -216,6 +217,7 @@ class ImageController: UIViewController,UICollectionViewDelegate,UICollectionVie
         return cell
 
     }
+
     func collectionView(_ collectionView: UICollectionView,layout collectionViewLayout: UICollectionViewLayout,sizeForItemAt indexPath: IndexPath) -> CGSize {
                 
         return CGSize(width: 128, height: 128)
@@ -287,11 +289,13 @@ class ImageController: UIViewController,UICollectionViewDelegate,UICollectionVie
 extension  ImageController : MarkerViewDelegate
 {
     func MarkerViewDragStart(markerCellImage: MarkerView, location: CGPoint) {
-        var markerImage: UIImage?
+
+        guard let decoImage = UIImage(named: markerCellImage.markerName) else {return}
         
-        guard let markerImage = markerCellImage.image else {return}
+        self.draggingImageView = MarkerBase.createMarker(image: decoImage)
         
-        self.draggingImageView = MarkerBase.createMarker(image: markerImage)
+        guard let draggingImageView = self.draggingImageView else {return}
+        
         self.draggingImageView?.frame = markerCellImage.convert(markerCellImage.bounds, to: self.ResultView)
         
         self.draggingImageView?.delegate = self

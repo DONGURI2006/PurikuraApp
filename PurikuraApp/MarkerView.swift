@@ -25,6 +25,9 @@ class MarkerView: UIImageView{
         self.isUserInteractionEnabled = true
         let panGestureRecognizer = UIPanGestureRecognizer(target: self, action: #selector(self.panGesture(gestureRecognizer:)))
         self.addGestureRecognizer(panGestureRecognizer)
+        
+        
+        
         self.frame.size = CGSize(width: 128, height: 128)
     }
         
