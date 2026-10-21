@@ -19,7 +19,7 @@ class CameraController: UIViewController, AVCapturePhotoCaptureDelegate {
     let photoOutput = AVCapturePhotoOutput()
     
     var Images: [UIImage] = []
-    var Odai = ["ハートのポーズを作ってね","プリキュアになれ","2Pacの真似をしろ","ほっぺをぷにろ","変顔をしろ","ダブルピースをしろ"]
+    var Odai = ["ハートのポーズを作ってね","ライオンのがおーポーズ","うさぎさんのお耳ポーズ","ピースで猫耳！","かわいくあごに手を当てて","腕をのばしてダブルピース"]
     var PhotoCount = 0
     var PictureCount = 0
     var CountTimer: Timer?

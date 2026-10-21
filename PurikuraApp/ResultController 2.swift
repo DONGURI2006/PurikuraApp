@@ -52,7 +52,7 @@ class ResultController2: UIViewController, UICollectionViewDelegate,
     //セルのサイズと配置を3指定する
     func collectionView(_ collectionView: UICollectionView,layout collectionViewLayout: UICollectionViewLayout,sizeForItemAt indexPath: IndexPath) -> CGSize {
                 
-        let width = (collectionView.bounds.width - 17) / 2
+        let width = (collectionView.bounds.width - 27) / 2
                 
         return CGSize(width: width,height: width)
     }

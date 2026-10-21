@@ -15,6 +15,7 @@ class ImageController: UIViewController,UICollectionViewDelegate,UICollectionVie
     @IBOutlet weak var ImgView: UIImageView!
     @IBOutlet weak var CollectionView: UICollectionView!
     
+    @IBOutlet weak var ChangeBtnImg: UIButton!
     @IBOutlet weak var CountText: UILabel!
     var Images: [UIImage] = []
     var IconImg = ["DecoImg1","Monkey","Monkey","Monkey","Monkey","Monkey","Monkey","Monkey"]
@@ -37,6 +38,8 @@ class ImageController: UIViewController,UICollectionViewDelegate,UICollectionVie
         navigationController?.interactivePopGestureRecognizer?.isEnabled = false
         
         super.viewDidLoad()
+        let newImage = UIImage(named: "ChangeBtn_2")
+        
         self.ImgView.contentMode = .scaleAspectFill
         self.ImgView.clipsToBounds = true
         self.ImgView.image  = self.Images[self.DrawCount]
@@ -44,6 +47,7 @@ class ImageController: UIViewController,UICollectionViewDelegate,UICollectionVie
         self.CollectionView.delegate = self
         self.CollectionView.dataSource = self
         
+        self.ChangeBtnImg.setImage(newImage, for: .normal)
         self.EditView1.isHidden = false
         self.EditView2.isHidden = true
         self.DrawingView.isUserInteractionEnabled = true
@@ -258,8 +262,10 @@ class ImageController: UIViewController,UICollectionViewDelegate,UICollectionVie
         }
     }
     @IBAction func ChangeBtn(_ sender: Any) {
+        
         if self.Changes{
-
+            let newImage = UIImage(named: "ChangeBtn_2")
+            self.ChangeBtnImg.setImage(newImage, for: .normal)
             self.EditView1.isHidden = false
             self.EditView2.isHidden = true
             self.DrawingView.lineColor = self.NowColor
@@ -271,7 +277,8 @@ class ImageController: UIViewController,UICollectionViewDelegate,UICollectionVie
             }
             self.Changes = false
         }else{
-            
+            let newImage = UIImage(named: "NextBtn")
+            self.ChangeBtnImg.setImage(newImage, for: .normal)
             self.EditView1.isHidden = true
             self.EditView2.isHidden = false
             self.DrawingView.isUserInteractionEnabled = false
