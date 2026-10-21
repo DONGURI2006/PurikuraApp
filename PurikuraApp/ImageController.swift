@@ -38,7 +38,7 @@ class ImageController: UIViewController,UICollectionViewDelegate,UICollectionVie
         navigationController?.interactivePopGestureRecognizer?.isEnabled = false
         
         super.viewDidLoad()
-        let newImage = UIImage(named: "ChangeBtn_2")
+        let NewImg = UIImage(named: "ChangeBtn_2")
         
         self.ImgView.contentMode = .scaleAspectFill
         self.ImgView.clipsToBounds = true
@@ -47,7 +47,7 @@ class ImageController: UIViewController,UICollectionViewDelegate,UICollectionVie
         self.CollectionView.delegate = self
         self.CollectionView.dataSource = self
         
-        self.ChangeBtnImg.setImage(newImage, for: .normal)
+        self.ChangeBtnImg.setImage(NewImg, for: .normal)
         self.EditView1.isHidden = false
         self.EditView2.isHidden = true
         self.DrawingView.isUserInteractionEnabled = true
@@ -262,10 +262,10 @@ class ImageController: UIViewController,UICollectionViewDelegate,UICollectionVie
         }
     }
     @IBAction func ChangeBtn(_ sender: Any) {
-        
+        var NewImg = UIImage(named: "ChangeBtn_2")
         if self.Changes{
-            let newImage = UIImage(named: "ChangeBtn_2")
-            self.ChangeBtnImg.setImage(newImage, for: .normal)
+            NewImg = UIImage(named: "ChangeBtn_2")
+            self.ChangeBtnImg.setImage(NewImg, for: .normal)
             self.EditView1.isHidden = false
             self.EditView2.isHidden = true
             self.DrawingView.lineColor = self.NowColor
@@ -277,8 +277,8 @@ class ImageController: UIViewController,UICollectionViewDelegate,UICollectionVie
             }
             self.Changes = false
         }else{
-            let newImage = UIImage(named: "NextBtn")
-            self.ChangeBtnImg.setImage(newImage, for: .normal)
+            NewImg = UIImage(named: "NextBtn")
+            self.ChangeBtnImg.setImage(NewImg, for: .normal)
             self.EditView1.isHidden = true
             self.EditView2.isHidden = false
             self.DrawingView.isUserInteractionEnabled = false
