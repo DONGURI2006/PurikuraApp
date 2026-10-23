@@ -124,10 +124,20 @@ class CameraController: UIViewController, AVCapturePhotoCaptureDelegate {
             
             if(self.TimeCount < 6){
                 self.CountNumber.text = String(self.TimeCount)
-                self.CountNumber.font = UIFont.systemFont(ofSize: 300)
+                self.CountNumber.font = UIFont(name: "ZenMaruGothic-Black", size: 300)
+                let attributes: [NSAttributedString.Key: Any] = [.strokeColor: UIColor.white,.strokeWidth: -6.0,.foregroundColor: UIColor(_colorLiteralRed: 191/255, green: 45/255, blue: 142/255, alpha: 1.0)]
+
+                self.CountNumber.attributedText = NSAttributedString(string: self.CountNumber.text ?? "",attributes: attributes)
+                
+                
             }else{
                 self.CountNumber.text = self.Odai[self.PhotoCount]
-                self.CountNumber.font = UIFont.systemFont(ofSize: 64)
+                self.CountNumber.font = UIFont(name: "ZenMaruGothic-Black", size: 64)
+                
+                let attributes: [NSAttributedString.Key: Any] = [.strokeColor: UIColor.white,.strokeWidth: -2.0,.foregroundColor: UIColor(_colorLiteralRed: 191/255, green: 45/255, blue: 142/255, alpha: 1.0)]
+                self.CountNumber.attributedText = NSAttributedString(string: self.CountNumber.text ?? "",attributes: attributes)
+                
+                
             }
             
             self.TimeCount -= 1

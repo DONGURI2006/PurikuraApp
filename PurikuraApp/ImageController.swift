@@ -18,8 +18,8 @@ class ImageController: UIViewController,UICollectionViewDelegate,UICollectionVie
     @IBOutlet weak var ChangeBtnImg: UIButton!
     @IBOutlet weak var CountText: UILabel!
     var Images: [UIImage] = []
-    var IconImg = ["DecoImg1","Monkey","Monkey","Monkey","Monkey","Monkey","Monkey","Monkey"]
-    var Icon = ["DecoIcon1","Monkey","Monkey","Monkey","Monkey","Monkey","Monkey","Monkey"]
+    var IconImg = ["DecoImg1","DecoImg2","DecoImg3","DecoImg4","DecoImg5","DecoImg6","DecoImg7","DecoImg8","DecoImg9","DecoImg10"]
+    var Icon = ["DecoIcon1","DecoIcon2","DecoIcon3","DecoIcon4","DecoIcon5","DecoIcon6","DecoIcon7","DecoIcon8","DecoIcon9","DecoIcon10"]
     var draggingImageView: MarkerBase?
     var correctMarkerCount = 0
     var SerectNumber = 0
@@ -52,6 +52,7 @@ class ImageController: UIViewController,UICollectionViewDelegate,UICollectionVie
         self.EditView2.isHidden = true
         self.DrawingView.isUserInteractionEnabled = true
         self.CountText.text = "1/" +  String(self.SerectNumber)
+        self.CountText.font = UIFont(name: "ZenMaruGothic-Black", size: 40)
         let color = UIColor(_colorLiteralRed: 252/255, green: 33/255, blue: 33/255, alpha: 1.0)
         
         self.DrawingView.lineColor = color
@@ -222,6 +223,9 @@ class ImageController: UIViewController,UICollectionViewDelegate,UICollectionVie
 
     }
 
+    func collectionView(_ collectionView: UICollectionView,layout collectionViewLayout: UICollectionViewLayout,minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return 50
+    }
     func collectionView(_ collectionView: UICollectionView,layout collectionViewLayout: UICollectionViewLayout,sizeForItemAt indexPath: IndexPath) -> CGSize {
                 
         return CGSize(width: 128, height: 128)
@@ -257,6 +261,7 @@ class ImageController: UIViewController,UICollectionViewDelegate,UICollectionVie
             self.DrawCount += 1
             self.CountText.text = String(self.DrawCount + 1) + "/" +  String(self.SerectNumber)
             self.ImgView.image = self.Images[self.DrawCount]
+            self.CountText.font = UIFont(name: "ZenMaruGothic-Black", size: 40)
 
             
         }
@@ -277,7 +282,7 @@ class ImageController: UIViewController,UICollectionViewDelegate,UICollectionVie
             }
             self.Changes = false
         }else{
-            NewImg = UIImage(named: "NextBtn")
+            NewImg = UIImage(named: "ChangeBtn_1")
             self.ChangeBtnImg.setImage(NewImg, for: .normal)
             self.EditView1.isHidden = true
             self.EditView2.isHidden = false

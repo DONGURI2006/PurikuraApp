@@ -4,10 +4,11 @@
 <dict>
 	<key>UIAppFonts</key>
 	<array>
-		<string>NotoSansJavanese-Bold</string>
-		<string>NotoSansJavanese-Medium</string>
-		<string>NotoSansJavanese-Regular</string>
-		<string>NotoSansJavanese-SemiBold</string>
+		<string>ZenMaruGothic-Black</string>
+		<string>ZenMaruGothic-Bold</string>
+		<string>ZenMaruGothic-Light</string>
+		<string>ZenMaruGothic-Medium</string>
+		<string>ZenMaruGothic-Regular</string>
 	</array>
 	<key>NSPhotoLibraryAddUsageDescription</key>
 	<string>カメラを保存</string>
