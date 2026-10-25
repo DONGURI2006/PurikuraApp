@@ -48,7 +48,7 @@ class BackSerectController: UIViewController,UICollectionViewDelegate,
         }else{
             self.SerectImgView3.isHidden = false
         }
-        
+        self.SerectImg = self.BackImages[0]
         self.BackImg.image = UIImage(named: self.BackImages[0])
         self.BackGarundControllerView.delegate = self
         self.BackGarundControllerView.dataSource = self
